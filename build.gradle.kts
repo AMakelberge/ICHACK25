@@ -26,6 +26,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:2.2.3")
     implementation("io.ktor:ktor-server-host-common-jvm:2.2.3")
     implementation("io.ktor:ktor-server-compression-jvm:2.2.3")
+    implementation("io.ktor:ktor-server-freemarker-jvm:2.2.3")
     // For server-side HTML rendering:
     implementation("io.ktor:ktor-server-html-builder-jvm:2.2.3")
 
