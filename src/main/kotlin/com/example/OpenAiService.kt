@@ -18,7 +18,7 @@ object OpenAiService {
     /**
      * Simple function to get a text completion from OpenAI.
      */
-    fun getCompletion(prompt: String): String = runBlocking {
+    fun getCode(prompt: String): String = runBlocking {
 
         val requestBody = """
             {
@@ -30,7 +30,7 @@ object OpenAiService {
                 },
                 {
                   "role": "user",
-                  "content": "$prompt"
+                  "content": "Comment every single line of code. Return the algorithm in Kotlin. Only return the algorithm, do not give any other response. $prompt"
                 }
               ],
               "max_tokens": 50,
@@ -68,6 +68,20 @@ object OpenAiService {
         val messageObject = firstChoice["message"]?.jsonObject
         val contentText = messageObject?.get("content")?.jsonPrimitive?.content
 
-        return@runBlocking contentText ?: "No content found in GPT-4 response"
+        return@runBlocking contentText ?: throw Exception("No response from ChatGPT")
     }
+
+    fun codeToLines(code: String): List<String> {
+        var result = code.trim()
+
+        result = result.removePrefix("```kotlin")
+        result = result.removePrefix("```")
+        result = result.removeSuffix("```")
+
+        return result.lineSequence()
+            .map { it.trimEnd() }
+            .toList()
+
+    }
+
 }

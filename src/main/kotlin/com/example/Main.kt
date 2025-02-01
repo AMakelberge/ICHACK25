@@ -46,8 +46,10 @@ fun Application.configureRouting() {
         // Example dynamic route that generates HTML on the server.
         // Demonstrates how you can integrate with the OpenAiService.
         get("/generate") {
-            val prompt = "Hello from Kotlin on the server side!"
-            val openAiResponse = OpenAiService.getCompletion(prompt)
+            val prompt = "Bubble Sort Algorithm"
+            val openAiResponse = OpenAiService.getCode(prompt)
+            val response = OpenAiService.codeToLines(openAiResponse)
+            println(response)
 
             // Respond with server-side rendered HTML using Ktor’s HTML DSL
             call.respondHtml(HttpStatusCode.OK) {
@@ -82,7 +84,7 @@ fun Application.configureRouting() {
                         }
                         p {
                             // This is the text returned from OpenAI
-                            +"Response: $openAiResponse"
+                            +"Response: $response"
                         }
                     }
                 }
