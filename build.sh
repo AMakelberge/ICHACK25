@@ -1,1 +1,0 @@
-./gradlew clean compileKotlin compileTestKotlin test lintKotlin

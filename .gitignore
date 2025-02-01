@@ -1,8 +1,0 @@
-build
-out
-target
-.gradle
-.idea
-*.iml
-*.class
-.DS_Store
