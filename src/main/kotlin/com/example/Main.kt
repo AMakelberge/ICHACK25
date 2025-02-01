@@ -35,7 +35,7 @@ fun Application.configureRouting() {
     routing {
         // Serve static files (index.html, CSS, etc.) from resources/static
         static("/") {
-            files("static")
+            files("src/main/resources/static")
         }
 
         get("/") {

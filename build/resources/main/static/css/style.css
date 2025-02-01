@@ -7,7 +7,7 @@
 
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #fdfdfd;
+    background-color: lightblue;
     color: #333;
     line-height: 1.6;
 }
@@ -78,3 +78,4 @@ button:hover {
 .highlight {
     color: #ff4081; /* bright pink accent */
 }
+

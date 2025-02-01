@@ -34,5 +34,6 @@ Anton:
 - [ ] Thing
 
 Kavya:
-- [ ] Get user algorithm prompt input
-- Function takes a string of the input from the user
+- [ ] Get user input for the algorithm prompt
+- Function takes a string of the input from the user from the HTML and input
+   it into the LLM
