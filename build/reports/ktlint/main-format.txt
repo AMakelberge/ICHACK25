@@ -1,0 +1,12 @@
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/database/PostsDatabase.kt:87:3: Format fixed > [standard:comment-spacing] Missing space after //
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/database/PostsDatabase.kt:88:4: Format fixed > [standard:comment-spacing] Missing space after //
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/ResponsePage.kt:5:25: Format fixed > [standard:parameter-list-wrapping] Parameter should start on a newline
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/ResponsePage.kt:6:4: Format fixed > [standard:indent] Unexpected indentation (24) (should be 2)
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/ResponsePage.kt:6:56: Format fixed > [standard:parameter-list-wrapping] Missing newline before ")"
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/PostsPage.kt:3:1: Format fixed > [standard:no-unused-imports] Unused import
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:22:1: Format fixed > [standard:no-consecutive-blank-lines] Needless blank line(s)
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:53:84: Format fixed > [standard:curly-spacing] Missing spacing after "{"
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:53:99: Format fixed > [standard:curly-spacing] Missing spacing before "}"
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:57:1: Format fixed > [standard:no-consecutive-blank-lines] Needless blank line(s)
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:78:54: Format fixed > [standard:curly-spacing] Missing spacing before "{"
+/Users/alexmakelberge/IdeaProjects/ICHACK25/src/main/kotlin/webapp/WebApp.kt:79:28: Format fixed > [standard:op-spacing] Missing spacing around "+"
