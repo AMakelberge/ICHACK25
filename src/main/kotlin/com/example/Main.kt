@@ -10,6 +10,7 @@ import io.ktor.server.plugins.compression.*
 import io.ktor.http.*
 import io.ktor.server.html.*
 import kotlinx.html.*
+import java.io.File
 
 fun main() {
     embeddedServer(Netty, port = 8080) {
@@ -35,11 +36,11 @@ fun Application.configureRouting() {
         // Serve static files (index.html, CSS, etc.) from resources/static
         static("/") {
             files("static")
-            default("static/index.html")
         }
 
         get("/") {
-            call.respondText("Hello from root!")
+            val file = File("src/main/resources/static/index.html")
+            call.respondFile(file)
         }
 
         // Example dynamic route that generates HTML on the server.
