@@ -90,8 +90,14 @@
             let dropzone = document.getElementById("drop-" + key);
             let child = dropzone.firstElementChild;
 
+            console.log(key)
+            console.log(dropzone)
+            console.log(child)
+            console.log(child.textContent)
+            console.log(keywordMap[key])
+
             // Compare the dropzone child text content to the expected value
-            if (child && child.textContent.trim() === keywordMap[key]) {
+            if (child && child.textContent === keywordMap[key]) {
                 dropzone.classList.add("correct");
                 dropzone.classList.remove("wrong");
             } else {
