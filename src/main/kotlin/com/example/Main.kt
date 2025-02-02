@@ -6,6 +6,7 @@ import io.ktor.server.freemarker.*
 import io.ktor.server.http.content.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.compression.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
@@ -33,13 +34,19 @@ fun main() {
             }
 
             get("/generate") {
-                val prompt = "Bubble Sort Algorithm"
-                val openAiResponse = OpenAiService.getCode(prompt)
+                val prompt = call.request.queryParameters["prompt"]
+                val openAiResponse = OpenAiService.getCode(prompt!!)
                 val response = OpenAiService.codeToLines(openAiResponse)
-                println(response)
 
-                val model = mapOf("response" to response)
+                val model = mapOf("response" to response, "prompt" to prompt)
                 call.respond(FreeMarkerContent("src/main/resources/templates/generate.ftl", model))
+            }
+
+            post("/generate") {
+                val formParameters = call.receiveParameters()
+                val prompt = formParameters["prompt"]
+
+                call.respondRedirect("/generate?prompt=$prompt")
             }
 
             get("/another") {

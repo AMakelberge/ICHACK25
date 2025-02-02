@@ -22,6 +22,13 @@
         We do not use any JavaScript in this example. All logic is performed
         on the server by Kotlin.
     </p>
+
+    <p class = 'prompt'>Let's build your algorithm!</p>
+    <form action="/generate" method="post">
+    <label for="prompt">Prompt:</label>
+    <input type="text" id="prompt" name="prompt"></input>
+    <input type="submit" value="Submit">
+    </form>
 </main>
 </body>
 </html>
