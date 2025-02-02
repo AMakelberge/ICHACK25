@@ -8,6 +8,11 @@ class Parse(lines: List<String>) {
     val CONSTRUCTS_LIST = listOf("for", "if", "while", "map", "filter", "reduce")
     val lines = lines.filterNot { it.isBlank() }
 
+    fun applyIndents(source: String, target: String): String {
+        val indentation = source.takeWhile{it.isWhitespace()}
+        return indentation + target
+    }
+
 
     // Original, replaced, Map(lineNum to construct)
     fun parse(): Triple<List<String>, List<String>, Map<Int, String>> {
@@ -29,7 +34,7 @@ class Parse(lines: List<String>) {
 
         val indexToLine = comments.keys.associateWith { lines[it] }
 
-        val replaced = lines.mapIndexed { i, line -> comments[i] ?: line }
+        val replaced = lines.mapIndexed { i, line -> comments[i]?.let { applyIndents(line, it) } ?: line }
 
         println(lines.joinToString(separator = "\n"))
         println(replaced.joinToString("\n"))

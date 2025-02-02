@@ -11,7 +11,6 @@
     <div class="navbar-brand">AlgoCraft</div>
     <ul class="navbar-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/generate">Generate</a></li>
     </ul>
 </nav>
 
