@@ -1,5 +1,5 @@
 # ICHACK25
 
-Clone repository.
-Run ./gradlew run
-Go to https://localhost:8080
+- Clone repository. 
+- Type into terminal: ./gradlew run
+- Go to https://localhost:8080
