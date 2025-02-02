@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Awaiting name</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 <nav class="navbar">
     <div class="navbar-brand">Awaiting name</div>
     <ul class="navbar-links">
         <li><a href="/">Home</a></li>
-        <li><a href="pages/additional-page.ftl">Another Page</a></li>
+        <li><a href="/another">Another Page</a></li>
         <li><a href="/generate">Generate</a></li>
     </ul>
 </nav>

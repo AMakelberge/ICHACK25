@@ -1,0 +1,81 @@
+/* Global resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: lightblue;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #00aaff; /* bright teal/cyan tone */
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem;
+    transition: background 0.3s;
+}
+
+.navbar-links li a:hover {
+    background: #008ecc;
+    border-radius: 4px;
+}
+
+/* Main container */
+.container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Buttons (if you need them) */
+button {
+    background: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #008ecc;
+}
+
+/* Example accent class */
+.highlight {
+    color: #ff4081; /* bright pink accent */
+}
+

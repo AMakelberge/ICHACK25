@@ -39,4 +39,5 @@ dependencies {
 
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation(kotlin("stdlib"))
 }

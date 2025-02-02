@@ -8,7 +8,6 @@ import io.ktor.server.netty.*
 import io.ktor.server.plugins.compression.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import java.io.File
 
 fun main() {
     embeddedServer(Netty, port = 8080) {
@@ -21,19 +20,25 @@ fun main() {
                 minimumSize(1024) // Only compress responses over 1KB
             }
         }
-        install(FreeMarker)
+        install(FreeMarker) {
+//            templateLoader = ClassTemplateLoader(
+//                this::class.java.classLoader,
+//                "src/main/resources/templates"
+//            )
+        }
 
         routing {
-            static("/") {
-                files("src/main/resources/templates")
+            static("/static") {
+                resources("static")
+                //files("src/main/resources/static/css")
             }
 
             get("/") {
-                val file = File("src/main/resources/templates/index.ftl")
-                call.respondFile(file)
+                //val file = File("src/main/resources/templates/index.ftl")
+                //call.respondFile(file)
 
                 val model = mapOf("hello" to "world")
-                call.respond(FreeMarkerContent("index.ftl", model))
+                call.respond(FreeMarkerContent("src/main/resources/templates/index.ftl", model))
             }
 
             get("/generate") {
@@ -43,8 +48,16 @@ fun main() {
                 println(response)
 
                 val model = mapOf("response" to response)
-                call.respond(FreeMarkerContent("generate.ftl", model))
+                call.respond(FreeMarkerContent("src/main/resources/templates/generate.ftl", model))
             }
+
+            get("/another") {
+                val data = mapOf(
+                    "message" to "Hello from another route!"
+                )
+                call.respond(FreeMarkerContent("src/main/resources/templates/additional-page.ftl", data))
+            }
+
         }
 
     }.start(wait = true)
