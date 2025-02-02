@@ -37,7 +37,7 @@ object OpenAiService {
                 }
               ],
               "max_tokens": 50,
-              "temperature": 0.7
+              "temperature": 0
             }
         """.trimIndent()
 
@@ -103,7 +103,7 @@ object OpenAiService {
                 }
               ],
               "max_tokens": 500,
-              "temperature": 0.2
+              "temperature": 0
             }
         """.trimIndent()
 

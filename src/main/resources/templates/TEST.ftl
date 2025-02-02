@@ -22,10 +22,10 @@
         <span class="dropzone" id="drop-${counter}" style="margin-left: ${indentation?length * 8}px"
               ondragover="allowDrop(event)"
               ondrop="drop(event)">Drop here</span> <!-- Apply margin-left based on indentation -->
+        <#assign counter = counter + 1>
     <#else>
         ${line} <!-- Print non-comment lines normally -->
     </#if>
-    <#assign counter = counter + 1>
     <!-- Manually increment the counter -->
 </#list>
         </pre>

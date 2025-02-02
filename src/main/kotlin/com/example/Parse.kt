@@ -3,9 +3,11 @@ package com.example
 import java.util.*
 import kotlin.random.Random
 
-class Parse(private val lines: List<String>) {
+class Parse(lines: List<String>) {
     val NUM_TO_REPLACE = 3
     val CONSTRUCTS_LIST = listOf("for", "if", "while", "map", "filter", "reduce")
+    val lines = lines.filterNot { it.isBlank() }
+
 
     // Original, replaced, Map(lineNum to construct)
     fun parse(): Triple<List<String>, List<String>, Map<Int, String>> {
@@ -18,17 +20,20 @@ class Parse(private val lines: List<String>) {
         val bytes = singleString.toByteArray(Charsets.UTF_8)
         val encodedLines = Base64.getEncoder().encodeToString(bytes)
 
-        val query = """This is my code which I have encoded in Base64: $encodedLines Decode it and give me comments for lines: $randomIndices Only return the comments, separated by a newline. The comments should be hints as to what to write on the line. Kotlin.""".trimIndent()
+        val query = """This is my code which I have encoded in Base64: $encodedLines Decode it and give me comments for lines (0th indexed) : $randomIndices Only return the comments, separated by a newline. The comments should describe what the lines directly underneath it does. Kotlin.""".trimIndent()
 
         val answer = OpenAiService.getAnswer(query)
 
         val comments = randomIndices.zip(OpenAiService.codeToLines(answer)).toMap()
 
-        //val indexToLine = comments.keys.map{ it to lines[it] }.toMap()
+        val indexToLine = comments.keys.map{ it to lines[it] }.toMap()
 
         val replaced = lines.mapIndexed { i, line -> comments[i] ?: line }
 
-        return Triple(lines, replaced, takenConstructs)
+        println(lines.joinToString(separator = "\n"))
+        println(replaced.joinToString("\n"))
+
+        return Triple(lines, replaced, indexToLine)
     }
 
 }
