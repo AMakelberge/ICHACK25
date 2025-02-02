@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="/static/css/test.css" type="text/css">
 </head>
 <body>
+<nav class="navbar">
+    <div class="navbar-brand">AlgoCraft</div>
+    <ul class="navbar-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/generate">Generate</a></li>
+    </ul>
+</nav>
 
 <div class="container">
     <!-- Code Box on the Left -->

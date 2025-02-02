@@ -55,13 +55,6 @@ fun main() {
                 call.respondRedirect("/generate?prompt=$prompt")
             }
 
-            get("/another") {
-                val data = mapOf(
-                    "message" to "Hello from another route!"
-                )
-                call.respond(FreeMarkerContent("src/main/resources/templates/additional-page.ftl", data))
-            }
-
         }
 
     }.start(wait = true)
