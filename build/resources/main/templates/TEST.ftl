@@ -12,19 +12,21 @@
     <!-- Code Box on the Left -->
     <div class="code-box">
         <pre>
-<#assign counter = 0> <!-- Initialize the counter outside the loop -->
+<#assign counter = 1> <!-- Initialize the counter outside the loop -->
 <#list lines as line>
     <#if line?contains("//")>
     <#-- Count leading spaces in the line before the comment -->
         <#assign indentation = line?substring(0, line?index_of(line?trim))>
         ${line} <!-- Print the line with comment -->
 
-        <span class="dropzone" id="drop-${counter}" style="margin-left: ${indentation?length * 8}px" ondragover="allowDrop(event)" ondrop="drop(event)">Drop here</span> <!-- Apply margin-left based on indentation -->
-        <#assign counter = counter + 1>
+        <span class="dropzone" id="drop-${counter}" style="margin-left: ${indentation?length * 8}px"
+              ondragover="allowDrop(event)"
+              ondrop="drop(event)">Drop here</span> <!-- Apply margin-left based on indentation -->
     <#else>
         ${line} <!-- Print non-comment lines normally -->
     </#if>
-      <!-- Manually increment the counter -->
+    <#assign counter = counter + 1>
+    <!-- Manually increment the counter -->
 </#list>
         </pre>
         <button id="checkButton">Check</button>
@@ -69,37 +71,32 @@
     }
 
     // Wait until the DOM is loaded
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         // Add event listener for the button click
         document.getElementById("checkButton").addEventListener("click", checkAnswers);
     });
 
     function checkAnswers() {
-        console.log("Testing");  // Logs to verify the function is triggered
-
-        // Define the expected answers for each dropzone
-        const expectedAnswers = {
-            "drop-0": "for",  // Expected block for line 3
-            "drop-1": "if"    // Expected block for line 5
+        var keywordMap = {
+            <#list keywordMap as key, value>
+            "${key}": "${value}"<#if key_has_next>,</#if>
+            </#list>
         };
 
-        // Loop through each dropzone
-        Object.keys(expectedAnswers).forEach(function(dropzoneId) {
-            let dropzone = document.getElementById(dropzoneId);
-            console.log(dropzoneId)
-            console.log(dropzone)
+        // Loop through the keys in the keywordMap object
+        for (let key in keywordMap) {
+            let dropzone = document.getElementById("drop-" + key);
             let child = dropzone.firstElementChild;
 
-            if (child && child.textContent.trim() === expectedAnswers[dropzoneId]) {
-                // If the block text matches the expected one, mark as correct
+            // Compare the dropzone child text content to the expected value
+            if (child && child.textContent.trim() === keywordMap[key]) {
                 dropzone.classList.add("correct");
                 dropzone.classList.remove("wrong");
             } else {
-                // Otherwise, mark as incorrect
                 dropzone.classList.add("wrong");
                 dropzone.classList.remove("correct");
             }
-        });
+        }
     }
 </script>
 

@@ -24,7 +24,7 @@
     </p>
 
     <p class = 'prompt'>Let's build your algorithm!</p>
-    <form action="/submit" method="post">
+    <form action="/generate" method="post">
     <label for="prompt">Prompt:</label>
     <input type="text" id="prompt" name="prompt"></input>
     <input type="submit" value="Submit">

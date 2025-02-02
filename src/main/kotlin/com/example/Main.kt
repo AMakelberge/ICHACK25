@@ -29,17 +29,23 @@ fun main() {
             }
 
             get("/") {
-                val model = mapOf("hello" to "world")
+                val model = emptyMap<String, String>()
                 call.respond(FreeMarkerContent("src/main/resources/templates/index.ftl", model))
             }
 
             get("/generate") {
                 val prompt = call.request.queryParameters["prompt"]
-                val openAiResponse = OpenAiService.getCode(prompt!!)
+                val openAiResponse = OpenAiService.getAnswer(prompt!!)
                 val response = OpenAiService.codeToLines(openAiResponse)
+                println(response)
+                val p = Parse(response)
+                val parsed = p.parse()
 
-                val model = mapOf("response" to response, "prompt" to prompt)
-                call.respond(FreeMarkerContent("src/main/resources/templates/generate.ftl", model))
+                println(parsed.second)
+                println(parsed.third)
+
+                val model = mapOf("lines" to parsed.second, "keywordMap" to parsed.third)
+                call.respond(FreeMarkerContent("src/main/resources/templates/TEST.ftl", model))
             }
 
             post("/generate") {

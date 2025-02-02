@@ -95,7 +95,7 @@ object OpenAiService {
               "messages": [
                 {
                   "role": "system",
-                  "content": "You only output code, nothing else. You take everything said completely literally."
+                  "content": "You only output code, nothing else. You take everything said completely literally. You program in Kotlin."
                 },
                 {
                   "role": "user",

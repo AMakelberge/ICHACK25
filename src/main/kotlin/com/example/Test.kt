@@ -6,4 +6,5 @@ fun main(){
     val p = Parse(OpenAiService.codeToLines(openAiResponse))
     val parsed = p.parse()
     println(p)
+    println(parsed)
 }
