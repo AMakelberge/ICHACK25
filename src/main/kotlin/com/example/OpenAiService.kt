@@ -6,7 +6,10 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 object OpenAiService {
     // Replace with an environment variable or secure vault in production
@@ -82,6 +85,57 @@ object OpenAiService {
             .map { it.trimEnd() }
             .toList()
 
+    }
+
+    fun getAnswer(prompt: String): String = runBlocking {
+
+        val requestBody = """
+            {
+              "model": "gpt-4",
+              "messages": [
+                {
+                  "role": "system",
+                  "content": "You only output code, nothing else. You take everything said completely literally."
+                },
+                {
+                  "role": "user",
+                  "content": "$prompt"
+                }
+              ],
+              "max_tokens": 500,
+              "temperature": 0.2
+            }
+        """.trimIndent()
+
+
+        val response: HttpResponse = client.post("https://api.openai.com/v1/chat/completions") {
+            header(HttpHeaders.Authorization, "Bearer $OPENAI_API_KEY")
+            header(HttpHeaders.ContentType, ContentType.Application.Json)
+            setBody(requestBody)
+        }
+
+
+        val status = response.status
+        val body = response.bodyAsText()
+
+        if (status != HttpStatusCode.OK) {
+            error("OpenAI GPT-4 error: $status\n$body")
+        }
+
+        // Parse the JSON response.
+        // GPT-4's structure is the same as GPT-3.5-turbo (Chat Completions).
+        val jsonResponse = Json.parseToJsonElement(body).jsonObject
+        val choicesArray = jsonResponse["choices"]?.jsonArray
+        if (choicesArray.isNullOrEmpty()) {
+            return@runBlocking "No choices returned"
+        }
+
+        // The model's text is found in choices[0].message.content
+        val firstChoice = choicesArray[0].jsonObject
+        val messageObject = firstChoice["message"]?.jsonObject
+        val contentText = messageObject?.get("content")?.jsonPrimitive?.content
+
+        return@runBlocking contentText ?: throw Exception("No response from ChatGPT")
     }
 
 }

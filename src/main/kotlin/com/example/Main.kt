@@ -20,23 +20,14 @@ fun main() {
                 minimumSize(1024) // Only compress responses over 1KB
             }
         }
-        install(FreeMarker) {
-//            templateLoader = ClassTemplateLoader(
-//                this::class.java.classLoader,
-//                "src/main/resources/templates"
-//            )
-        }
+        install(FreeMarker)
 
         routing {
             static("/static") {
                 resources("static")
-                //files("src/main/resources/static/css")
             }
 
             get("/") {
-                //val file = File("src/main/resources/templates/index.ftl")
-                //call.respondFile(file)
-
                 val model = mapOf("hello" to "world")
                 call.respond(FreeMarkerContent("src/main/resources/templates/index.ftl", model))
             }
