@@ -27,7 +27,7 @@ class Parse(lines: List<String>) {
 
         val comments = randomIndices.zip(OpenAiService.codeToLines(answer)).toMap()
 
-        val indexToLine = comments.keys.map{ it to lines[it] }.toMap()
+        val indexToLine = comments.keys.associateWith { lines[it] }
 
         val replaced = lines.mapIndexed { i, line -> comments[i] ?: line }
 
