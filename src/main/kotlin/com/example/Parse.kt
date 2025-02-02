@@ -15,12 +15,13 @@ class Parse(lines: List<String>) {
         val takenLines = constructLines.shuffled(Random).take(NUM_TO_REPLACE).toList().sortedBy { it.first }
         val takenConstructs = takenLines.associate { (i, line) -> i to CONSTRUCTS_LIST.find { line.contains(it) }!! }
         val randomIndices = takenLines.map { it.first }
+        val randomLines = takenLines.map { it.second }
 
         val singleString = lines.joinToString(separator = "\n")
         val bytes = singleString.toByteArray(Charsets.UTF_8)
         val encodedLines = Base64.getEncoder().encodeToString(bytes)
 
-        val query = """This is my code which I have encoded in Base64: $encodedLines Decode it and give me comments for lines (0th indexed) : $randomIndices Only return the comments, separated by a newline. The comments should describe what the lines directly underneath it does. Kotlin.""".trimIndent()
+        val query = """This is my code which I have encoded in Base64: $encodedLines Decode it and give me comments for these lines: $randomLines Only return the comments, separated by a newline. The comments should describe what the line does. Make the comment short and use simplified language. Kotlin.""".trimIndent()
 
         val answer = OpenAiService.getAnswer(query)
 

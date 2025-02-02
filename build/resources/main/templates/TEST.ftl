@@ -12,7 +12,7 @@
     <!-- Code Box on the Left -->
     <div class="code-box">
         <pre>
-<#assign counter = 1> <!-- Initialize the counter outside the loop -->
+<#assign counter = 0> <!-- Initialize the counter outside the loop -->
 <#list lines as line>
     <#if line?contains("//")>
     <#-- Count leading spaces in the line before the comment -->
@@ -22,10 +22,10 @@
         <span class="dropzone" id="drop-${counter}" style="margin-left: ${indentation?length * 8}px"
               ondragover="allowDrop(event)"
               ondrop="drop(event)">Drop here</span> <!-- Apply margin-left based on indentation -->
-        <#assign counter = counter + 1>
     <#else>
         ${line} <!-- Print non-comment lines normally -->
     </#if>
+    <#assign counter = counter + 1>
     <!-- Manually increment the counter -->
 </#list>
         </pre>
@@ -82,6 +82,8 @@
             "${key}": "${value}"<#if key_has_next>,</#if>
             </#list>
         };
+
+        console.log(keywordMap)
 
         // Loop through the keys in the keywordMap object
         for (let key in keywordMap) {

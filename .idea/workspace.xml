@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc9dd4e-9dee-45c0-825e-4791b8a5e2ba" name="Changes" comment="Kinda working, kinda not">
+    <list default="true" id="9bc9dd4e-9dee-45c0-825e-4791b8a5e2ba" name="Changes" comment="improved parser">
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10/executionHistory/executionHistory.lock" afterDir="false" />
@@ -46,8 +46,9 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/my-education-tool.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/my-education-tool.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/example/OpenAiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/OpenAiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/TEST.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/TEST.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/example/Parse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/example/Parse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/TEST.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/TEST.ftl" afterDir="false" />
     </list>
     <list id="d705e11a-c0dc-445e-9498-f825fad369cc" name="Changes by rohit" comment="Just pushed to keep versions the same" />
     <option name="SHOW_DIALOG" value="false" />
@@ -285,7 +286,7 @@
       <workItem from="1738434545861" duration="7543000" />
       <workItem from="1738446194126" duration="6494000" />
       <workItem from="1738458699113" duration="6014000" />
-      <workItem from="1738483001490" duration="334000" />
+      <workItem from="1738483001490" duration="2523000" />
     </task>
     <task id="LOCAL-00001" summary="Part 2 finished">
       <option name="closed" value="true" />
@@ -391,7 +392,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738478369500</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="improved parser">
+      <option name="closed" value="true" />
+      <created>1738483756627</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738483756627</updated>
+    </task>
+    <task id="LOCAL-00015" summary="improved parser">
+      <option name="closed" value="true" />
+      <created>1738483768559</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738483768559</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,6 +437,7 @@
     <MESSAGE value="Updated Main.kt and html to support ftl files for dynamic sites." />
     <MESSAGE value="Fixed antontest, still needs to be generalised" />
     <MESSAGE value="Kinda working, kinda not" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kinda working, kinda not" />
+    <MESSAGE value="improved parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved parser" />
   </component>
 </project>
