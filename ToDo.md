@@ -37,3 +37,12 @@ Kavya:
 - [ ] Get user input for the algorithm prompt
 - Function takes a string of the input from the user from the HTML and input
    it into the LLM
+
+Generalise the code for any number of comments
+Page for inputting prompt
+link that to the generates/parse
+display parse answer on antontest 
+do the answer checking
+if correct yippee -> go back to home page to generate again
+if incorrect 
+   feed mistake into gpt and make it give a hint 

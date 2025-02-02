@@ -23,11 +23,11 @@ class Parse(private val lines: List<String>) {
 
         val comments = randomIndices.zip(OpenAiService.codeToLines(answer)).toMap()
 
-        val originalLines = comments.keys.map{ it to lines[it] }.toMap()
+        val indexToLine = comments.keys.map{ it to lines[it] }.toMap()
 
         val replaced = lines.mapIndexed { i, line -> comments[i] ?: line }
 
-        return Triple(lines, replaced, originalLines)
+        return Triple(lines, replaced, indexToLine)
     }
 
 }
